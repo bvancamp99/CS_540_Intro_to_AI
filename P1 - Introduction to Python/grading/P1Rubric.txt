@@ -1,0 +1,65 @@
+fill - 3 + 3 + 4 pts
+--------------------------------------------------------
+
+fill0 - statespace.fill([0, 0], [10, 5], 0)
+fill1 - statespace.fill([0, 2], [10, 5], 1)
+fill2 - statespace.fill([10, 0], [10, 5], 0)
+
+empty - 3 + 3 + 4 pts
+--------------------------------------------------------
+
+empty0 - statespace.empty([7, 8], [10, 5], 0)
+empty1 - statespace.empty([0, 5], [10, 5], 0)
+empty2 - statespace.empty([10, 5], [10, 5], 1)
+
+xfer - 3 + 3 + 4 pts
+--------------------------------------------------------
+
+xfer0 - statespace.xfer([0, 9], [15, 9], 0, 1)
+xfer1 - statespace.xfer([10, 9], [15, 9], 0, 1)
+xfer2 - statespace.xfer([7, 10], [9, 15], 1, 0)
+
+succ - 2 pts each
+--------------------------------------------------------
+
+succ0 - statespace.succ([0, 0], [7, 9])
+succ1 - statespace.succ([3, 2], [7, 9])
+succ2 - statespace.succ([7, 0], [7, 9])
+succ3 - statespace.succ([0, 9], [7, 9])
+succ4 - statespace.succ([7, 9], [7, 9])
+
+euclidean_distance - 2 + 2 + 3 + 3 pts
+--------------------------------------------------------
+
+euc0 - weather.euclidean_distance({'DATE': '1951-05-19', 'TMAX': 66.0, 'PRCP': 0.0, 'TMIN': 43.0, 'RAIN': 'FALSE'},{'DATE': '1951-01-27', 'TMAX': 33.0, 'PRCP': 0.0, 'TMIN': 19.0, 'RAIN': 'FALSE'})
+
+euc1 - weather.euclidean_distance({'DATE': '2015-08-12', 'TMAX': 83.0, 'PRCP': 0.3, 'TMIN': 62.0, 'RAIN': 'TRUE'}, {'DATE': '2014-05-19', 'TMAX': 70.0, 'PRCP': 0.0, 'TMIN': 50.0, 'RAIN': 'FALSE'})
+
+euc2 - weather.euclidean_distance({'DATE': '2015-08-12', 'TMAX': 34.12, 'PRCP': 0.35, 'TMIN': 23.01, 'RAIN': 'TRUE'}, {'DATE': '2014-05-19', 'TMAX': 75.0, 'PRCP': 0.0, 'TMIN': 50.0, 'RAIN': 'FALSE'})
+
+euc3 - weather.euclidean_distance({'DATE': '2015-08-12', 'TMAX': 46.07, 'PRCP': 0.56, 'TMIN': 0.0, 'RAIN': 'TRUE'}, {'DATE': '2014-05-19', 'TMAX': 73.0, 'PRCP': 0.0, 'TMIN': 26.24, 'RAIN': 'TRUE'})
+
+read_dataset - 10 pts
+--------------------------------------------------------
+
+readds0 - ds = weather.read_dataset('rain.txt'); print(len(ds)); print(ds[0]); print(ds[-1])
+
+majority_vote  - 3 + 2 + 5 pts
+--------------------------------------------------------
+
+maj0 - weather.majority_vote([{'DATE': '2015-08-12', 'TMAX': 83.0, 'PRCP': 0.3, 'TMIN': 62.0, 'RAIN': 'TRUE'},{'DATE': '2014-05-19', 'TMAX': 70.0, 'PRCP': 0.0, 'TMIN': 50.0, 'RAIN': 'FALSE'},{'DATE': '2014-12-05', 'TMAX': 55.0, 'PRCP': 0.12, 'TMIN': 44.0, 'RAIN': 'TRUE'},{'DATE': '1954-09-08', 'TMAX': 71.0, 'PRCP': 0.02, 'TMIN': 55.0, 'RAIN': 'TRUE'},{'DATE': '2014-08-27', 'TMAX': 84.0, 'PRCP': 0.0, 'TMIN': 61.0, 'RAIN': 'FALSE'}])
+
+maj1 - weather.majority_vote([{'DATE': '2015-08-12', 'TMAX': 83.0, 'PRCP': 0.3, 'TMIN': 62.0, 'RAIN': 'TRUE'},{'DATE': '2014-05-19', 'TMAX': 70.0, 'PRCP': 0.0, 'TMIN': 50.0, 'RAIN': 'FALSE'}])
+
+maj2 - weather.majority_vote([{'DATE': '2015-08-12', 'TMAX': 83.0, 'PRCP': 0.3, 'TMIN': 62.0, 'RAIN': 'FALSE'},{'DATE': '2014-05-19', 'TMAX': 70.0, 'PRCP': 0.0, 'TMIN': 50.0, 'RAIN': 'FALSE'},{'DATE': '2014-12-05', 'TMAX': 55.0, 'PRCP': 0.12, 'TMIN': 44.0, 'RAIN': 'TRUE'},{'DATE': '1954-09-08', 'TMAX': 71.0, 'PRCP': 0.02, 'TMIN': 55.0, 'RAIN': 'TRUE'},{'DATE': '2014-08-27', 'TMAX': 84.0, 'PRCP': 0.0, 'TMIN': 61.0, 'RAIN': 'FALSE'}])
+
+k_nearest_neighbors - 2 + 2 + 2 + 4 pts
+--------------------------------------------------------
+
+knn0  - weather.k_nearest_neighbors('rain.txt', {'DATE': '1948-01-01', 'TMAX': 51.0, 'PRCP': 0.00, 'TMIN': 42.0}, 2)
+
+knn1 - weather.k_nearest_neighbors('rain.txt', {'DATE': '1948-01-01', 'TMAX': 51.0, 'PRCP': 0.00, 'TMIN': 42.0}, 10)
+
+knn2 - weather.k_nearest_neighbors('rain.txt', {'DATE': '1948-01-01', 'TMAX': 51.0, 'PRCP': 0.05, 'TMIN': 42.0}, 10)
+
+knn3 - weather.k_nearest_neighbors('rain.txt', {'DATE': '2020-02-17', 'TMAX': 35.0, 'PRCP': 0.65, 'TMIN': 25.0}, 5)
